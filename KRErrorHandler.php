@@ -32,14 +32,16 @@ class KRErrorHandler {
     KRErrorHandler::notifySlack($message);
     return true; 
   }
+  
   public static function init(){
     set_exception_handler("KRErrorHandler::exception");
     set_error_handler("KRErrorHandler::error");
   }
+  
   public static function var_dump($data){
-    //var_dump(print_r($data, true));
-    KRErrorHandler::notifySlack(print_r($data, true));//
+    KRErrorHandler::notifySlack(print_r($data, true));
   }
+  
   public static function notifySlack($message){
     
     $c = curl_init("https://hooks.slack.com/services/XXXXX/YYYYYY/ZZZZZZZZZZZZZZ");
